@@ -54,6 +54,8 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.title = @"Yelp";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

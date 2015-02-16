@@ -19,10 +19,13 @@
 
 - (void)awakeFromNib {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self.priceSegment setSelectedSegmentIndex:UISegmentedControlSegmentAny];
 }
 
 - (IBAction)priceSegmentsChanged:(id)sender {
     NSLog(@"%@", sender);
+    //UISegmentedControl *segment = (UISegmentedControl *)sender;
 }
 
 @end

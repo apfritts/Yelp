@@ -12,7 +12,7 @@
 
 @protocol FiltersTableViewControllerDelegate <NSObject>
 
--(void)filtersTableViewController:(FiltersTableViewController *)ftvc didChangeFilters:(NSString *)filters;
+-(void)filtersTableViewController:(FiltersTableViewController *)ftvc didChangeFilters:(NSDictionary *)filters;
 
 @end
 

@@ -34,23 +34,6 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        [self searchWithQuery:@"Thai" andParams:nil];
-        
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        
-        [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
-        
-        self.title = @"Yelp";
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilter)];
-        
-        UISearchBar *search = [[UISearchBar alloc] init];
-        [search setText:@"Search"];
-        search.delegate = self;
-        self.navigationItem.titleView = search;
     }
     return self;
 }
@@ -69,6 +52,24 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self searchWithQuery:@"Thai" andParams:nil];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
+    
+    self.title = @"Yelp";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilter)];
+    
+    UISearchBar *search = [[UISearchBar alloc] init];
+    [search setText:@"Search"];
+    search.delegate = self;
+    self.navigationItem.titleView = search;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -88,8 +89,8 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
     [self presentViewController:fnc animated:YES completion:nil];
 }
 
--(void)filtersTableViewController:(FiltersTableViewController *)ftvc didChangeFilters:(NSString *)filters {
-    NSLog(@"Filters changed! %@", filters);
+-(void)filtersTableViewController:(FiltersTableViewController *)ftvc didChangeFilters:(NSDictionary *)filters {
+    [self searchWithQuery:@"Thai" andParams:filters];
 }
 
 @end

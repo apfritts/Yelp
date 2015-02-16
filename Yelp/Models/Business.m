@@ -18,7 +18,7 @@
         [categories enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [categoryNames addObject:obj[0]];
         }];
-        [self setCategories:[categoryNames componentsJoinedByString:@" ,"]];
+        [self setCategories:[categoryNames componentsJoinedByString:@", "]];
 
         [self setName:dictionary[@"name"]];
         [self setImageUrl:dictionary[@"image_url"]];

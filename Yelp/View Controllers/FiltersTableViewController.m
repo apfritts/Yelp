@@ -52,7 +52,8 @@
         for (NSDictionary *category in self.selectedCategories) {
             [filterCodes addObject:category[@"code"]];
         }
-        NSString *filters = [filterCodes componentsJoinedByString:@","];
+        NSMutableDictionary *filters = [NSMutableDictionary dictionary];
+        [filters setObject:[filterCodes componentsJoinedByString:@","] forKey:@"category_filter"];
         [self.delegate filtersTableViewController:self didChangeFilters:filters];
     }
     [self dismissViewControllerAnimated:YES completion:nil];

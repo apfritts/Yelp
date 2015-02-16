@@ -17,7 +17,7 @@ NSString * const kYelpConsumerSecret = @"bbmW5U3940Lkt0Q0U11hlrciu00";
 NSString * const kYelpToken = @"NTf7f_lcyk3tdf7AF3sUcH6lvZrw3vLX";
 NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FiltersTableViewControllerDelegate>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FiltersTableViewControllerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) NSArray *businesses;
@@ -46,6 +46,11 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
         self.title = @"Yelp";
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilter)];
+        
+        UISearchBar *search = [[UISearchBar alloc] init];
+        [search setText:@"Search"];
+        search.delegate = self;
+        self.navigationItem.titleView = search;
     }
     return self;
 }

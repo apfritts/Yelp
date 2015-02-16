@@ -24,7 +24,8 @@
     
     // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters addEntriesFromDictionary:@{@"term": term, @"ll" : @"37.774866,-122.394556"}];
+    [parameters setObject:term forKey:@"term"];
+    [parameters setObject:@"37.774866,-122.394556" forKey:@"ll"];
     if (params != nil) {
         [parameters addEntriesFromDictionary:params];
     }

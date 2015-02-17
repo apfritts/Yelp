@@ -11,6 +11,8 @@
 #import "Business.h"
 #import "BusinessCell.h"
 #import "FiltersTableViewController.h"
+#import <FontAwesome+iOS/NSString+FontAwesome.h>
+#import <FontAwesome+iOS/UIFont+FontAwesome.h>
 
 NSString * const kYelpConsumerKey = @"y8PdBHAl5iPRkOxsBx8dnw";
 NSString * const kYelpConsumerSecret = @"bbmW5U3940Lkt0Q0U11hlrciu00";
@@ -54,18 +56,39 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 {
     [super viewDidLoad];
     
-    [self searchWithQuery:@"Restaurants" andParams:nil];
-    
+    // Setup table view
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilter)];
+    // Start the search!
+    [self searchWithQuery:@"Restaurants" andParams:nil];
+    
+    // Set tab bar
+    /*
+    UILabel *filterButtonLabel = [[UILabel alloc] init];
+    filterButtonLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:16];
+    filterButtonLabel.text = [NSString fontAwesomeIconStringForEnum:FAIconFilter];
+    [filterButtonLabel sizeToFit];
+    CGSize labelSize = [filterButtonLabel bounds].size;
+    [filterButtonLabel setBounds:CGRectMake(0, 0, labelSize.width, labelSize.height)];
+    UIView *filterButtonView = [[UIView alloc] init];
+    [filterButtonView addSubview:filterButtonLabel];
+    [filterButtonView sizeToFit];
+    CGSize viewSize = [filterButtonView bounds].size;
+    NSLog(@"%f x %f", viewSize.width, viewSize.height);
+    //UIBarButtonItem *filterBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForEnum:FAIconGithub] style:UIBarButtonItemStylePlain target:self action:@selector(onFilter)];
+    //self.navigationItem.leftBarButtonItem = filterBarButtonItem;
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] init];
+    leftBarButton.customView = filterButtonView;
+    [leftBarButton.customView sizeToFit];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
+     */
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(onFilter)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(onSearch)];
     
+    // Setup the search bar
     UISearchBar *search = [[UISearchBar alloc] init];
     search.text = @"Restaurants";
     search.delegate = self;

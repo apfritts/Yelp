@@ -21,29 +21,22 @@ PODS:
   - BDBOAuth1Manager (1.2.0):
     - AFNetworking/NSURLConnection (~> 2.2.0)
     - AFNetworking/NSURLSession (~> 2.2.0)
+  - FontAwesome+iOS (0.1.4)
+  - RadioButton (1.0)
   - THSegmentedControl (0.1.8)
-  - TYPFontAwesome (4.1.0):
-    - TYPFontAwesome/EOT (= 4.1.0)
-    - TYPFontAwesome/OTF (= 4.1.0)
-    - TYPFontAwesome/SVG (= 4.1.0)
-    - TYPFontAwesome/TTF (= 4.1.0)
-    - TYPFontAwesome/WOFF (= 4.1.0)
-  - TYPFontAwesome/EOT (4.1.0)
-  - TYPFontAwesome/OTF (4.1.0)
-  - TYPFontAwesome/SVG (4.1.0)
-  - TYPFontAwesome/TTF (4.1.0)
-  - TYPFontAwesome/WOFF (4.1.0)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - FontAwesome+iOS
+  - RadioButton
   - THSegmentedControl
-  - TYPFontAwesome
 
 SPEC CHECKSUMS:
   AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
   BDBOAuth1Manager: 468477f0425ce24b3a19a34bbf176fac11225232
+  FontAwesome+iOS: 816c20304edef4ca92835de669577005cbaaf261
+  RadioButton: 694b2eec7af41a88ae4dc8c7a638980918e46216
   THSegmentedControl: de1fdbb2fc7b8fc66236773bafe92227b88b96d8
-  TYPFontAwesome: 35c7fd77d10e237ac491b80d1b271712cc132e7d
 
 COCOAPODS: 0.36.0.beta.1

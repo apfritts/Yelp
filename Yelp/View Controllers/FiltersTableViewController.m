@@ -10,11 +10,14 @@
 #import "FilterCell.h"
 #import "PriceCell.h"
 #import "HeaderView.h"
+#import "SortCell.h"
 
-@interface FiltersTableViewController () <FilterCellDelegate>
+@interface FiltersTableViewController () <FilterCellDelegate, SortCellDelegate>
 
 @property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSArray *sortOrders;
 @property (nonatomic, strong) NSMutableSet *selectedCategories;
+@property (nonatomic, strong) SortCell *selectedSortMethod;
 
 @end
 
@@ -23,7 +26,7 @@
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self initCategories];
+        [self initData];
         self.selectedCategories = [NSMutableSet set];
     }
     return self;
@@ -40,6 +43,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellReuseIdentifier:@"FilterCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"PriceCell" bundle:nil] forCellReuseIdentifier:@"PriceCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SortCell" bundle:nil] forCellReuseIdentifier:@"SortCell"];
 }
 
 -(void)onCancel {
@@ -62,7 +66,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,7 +74,9 @@
         case 0:
             return 1;
             break;
-            
+        case 1:
+            return 3;
+            break;
         default:
             return self.categories.count;
             break;
@@ -90,23 +96,40 @@
 */
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Price";
-    } else {
-        return @"Categories";
+    switch (section) {
+        case 0:
+            return @"Price";
+            break;
+        case 1:
+            return @"Sort";
+            break;
+        default:
+            return @"Categories";
+            break;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        PriceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PriceCell"];
-        return cell;
-    } else {
-        FilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell" forIndexPath:indexPath];
-        [cell setTitle:self.categories[indexPath.row][@"name"] ];
-        [cell setOn:[self.selectedCategories containsObject:self.categories[indexPath.row]] animated:NO];
-        cell.delegate = self;
-        return cell;
+    switch (indexPath.section) {
+        case 0:
+            return [self.tableView dequeueReusableCellWithIdentifier:@"PriceCell"];
+            break;
+        case 1:
+        {
+            SortCell *cell = [[SortCell alloc] initWithTitle:self.sortOrders[indexPath.row] isOn:NO];
+            cell.delegate = self;
+            return cell;
+            break;
+        }
+        default:
+        {
+            FilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FilterCell" forIndexPath:indexPath];
+            [cell setTitle:self.categories[indexPath.row][@"name"] ];
+            [cell setOn:[self.selectedCategories containsObject:self.categories[indexPath.row]] animated:NO];
+            cell.delegate = self;
+            return cell;
+            break;
+        }
     }
 }
 
@@ -119,7 +142,18 @@
     }
 }
 
--(void)initCategories {
+-(void)sortCell:(SortCell *)sortCell isSelected:(BOOL)selected {
+    [self.selectedSortMethod setOn:NO];
+    self.selectedSortMethod = sortCell;
+}
+
+-(void)initData {
+    self.sortOrders =
+    @[
+      @"Best Match",
+      @"Distance",
+      @"Highest Rated"
+      ];
     self.categories = @[
                         @{@"name": @"Afghan", @"code": @"afghani"},
                         @{@"name": @"African", @"code": @"african"},

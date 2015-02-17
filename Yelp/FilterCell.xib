@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +16,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGD-SF-AsY">
                         <rect key="frame" x="8" y="11" width="247" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-JJ-krt">
@@ -32,7 +32,7 @@
                     <constraint firstAttribute="trailing" secondItem="XK8-JJ-krt" secondAttribute="trailing" constant="8" id="Iz3-zP-Tr7"/>
                     <constraint firstItem="cGD-SF-AsY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Ns8-yu-eop"/>
                     <constraint firstItem="XK8-JJ-krt" firstAttribute="centerY" secondItem="cGD-SF-AsY" secondAttribute="centerY" id="xj0-9N-9Ub"/>
-                    <constraint firstAttribute="bottom" secondItem="cGD-SF-AsY" secondAttribute="bottom" constant="12" id="z7Q-rs-NkF"/>
+                    <constraint firstAttribute="bottom" secondItem="cGD-SF-AsY" secondAttribute="bottom" constant="11" id="z7Q-rs-NkF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

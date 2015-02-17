@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SortCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjA-yg-FGI">
+                        <rect key="frame" x="8" y="11" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Gah-BS-7ZL"/>
+                            <constraint firstAttribute="width" constant="24" id="Hxy-WG-lXe"/>
+                            <constraint firstAttribute="height" constant="24" id="O1M-bb-yx7"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="hsl-7Q-F0h"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <state key="normal" image="unchecked"/>
+                        <state key="disabled" image="unchecked"/>
+                        <state key="selected" image="checked"/>
+                        <state key="highlighted" image="checked"/>
+                        <connections>
+                            <action selector="radioButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sc6-cs-I3z"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-V5-JRE">
+                        <rect key="frame" x="40" y="10" width="272" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zgC-V5-JRE" firstAttribute="leading" secondItem="TjA-yg-FGI" secondAttribute="trailing" constant="8" id="37v-cF-Cq1"/>
+                    <constraint firstAttribute="trailing" secondItem="zgC-V5-JRE" secondAttribute="trailing" constant="8" id="VhQ-ad-MJk"/>
+                    <constraint firstItem="TjA-yg-FGI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="WHH-Uu-7Zd"/>
+                    <constraint firstItem="TjA-yg-FGI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="XdI-xn-u8F"/>
+                    <constraint firstAttribute="bottom" secondItem="TjA-yg-FGI" secondAttribute="bottom" constant="8" id="eeZ-Qc-Vnv"/>
+                    <constraint firstItem="zgC-V5-JRE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="fTL-XH-55e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="radioButton" destination="TjA-yg-FGI" id="fLy-ng-LQj"/>
+                <outlet property="radioLabel" destination="zgC-V5-JRE" id="tct-L1-Wyb"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checked" width="24" height="24"/>
+        <image name="unchecked" width="24" height="24"/>
+    </resources>
+</document>

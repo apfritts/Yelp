@@ -7,25 +7,36 @@
 //
 
 #import "PriceCell.h"
+#import <THSegmentedControl/THSegmentedControl.h>
 
 @interface PriceCell()
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *priceSegment;
-- (IBAction)priceSegmentsChanged:(id)sender;
+@property (strong, nonatomic) THSegmentedControl *priceSegment;
 
 @end
 
 @implementation PriceCell
 
-- (void)awakeFromNib {
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    [self.priceSegment setSelectedSegmentIndex:UISegmentedControlSegmentAny];
+-(CGSize)intrinsicContentSize {
+    return CGSizeMake([[UIScreen mainScreen] bounds].size.width, 30);
 }
 
-- (IBAction)priceSegmentsChanged:(id)sender {
-    NSLog(@"%@", sender);
-    //UISegmentedControl *segment = (UISegmentedControl *)sender;
+- (void)awakeFromNib {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSArray *segments = @[@"$", @"$$", @"$$$", @"$$$$"];
+    self.priceSegment = [[THSegmentedControl alloc] initWithSegments:segments];
+    [self.priceSegment addTarget:self action:@selector(thControlChangedSegment:) forControlEvents:UIControlEventValueChanged | UIControlEventTouchUpInside];
+    [self addSubview:self.priceSegment];
+    CGSize bounds = [[UIScreen mainScreen] bounds].size;
+    [self.priceSegment setBounds:CGRectMake(4, 4, bounds.width - 8, 22)];
+    NSLog(@"%f x %f", self.priceSegment.center.x, self.priceSegment.center.y);
+}
+
+-(void)thControlChangedSegment:(THSegmentedControl *)thSegmentedControl {
+    NSOrderedSet *orderedIndexes = thSegmentedControl.selectedIndexes;
+    for (NSNumber *selection in orderedIndexes) {
+        NSLog(@"I'm a selected segment %@", [thSegmentedControl titleForSegmentAtIndex:[selection intValue]]);
+    }
 }
 
 @end

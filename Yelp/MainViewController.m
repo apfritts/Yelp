@@ -42,6 +42,7 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
     [self.client searchWithTerm:query withParams:params success:^(AFHTTPRequestOperation *operation, id response) {
         NSArray *businessesDictionary = response[@"businesses"];
         self.businesses = [Business businessesWithDictionaries:businessesDictionary];
+        //NSLog(@"%@", businessesDictionary[0]);
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [error description]);
@@ -53,7 +54,7 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 {
     [super viewDidLoad];
     
-    [self searchWithQuery:@"Thai" andParams:nil];
+    [self searchWithQuery:@"Restaurants" andParams:nil];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -62,12 +63,11 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
     
-    self.title = @"Yelp";
-    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(onFilter)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(onSearch)];
     
     UISearchBar *search = [[UISearchBar alloc] init];
-    [search setText:@"Search"];
+    search.text = @"Restaurants";
     search.delegate = self;
     self.navigationItem.titleView = search;
 }
@@ -90,7 +90,24 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 }
 
 -(void)filtersTableViewController:(FiltersTableViewController *)ftvc didChangeFilters:(NSDictionary *)filters {
-    [self searchWithQuery:@"Thai" andParams:filters];
+    UISearchBar *searchBar = (UISearchBar *)self.navigationItem.titleView;
+    [self searchWithQuery:searchBar.text andParams:filters];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self searchWithQuery:searchBar.text andParams:nil];
+    [searchBar endEditing:YES];
+}
+
+-(void)onSearch {
+    UISearchBar *searchBar = (UISearchBar *)self.navigationItem.titleView;
+    NSString *query = searchBar.text;
+    if ([query length] == 0) {
+        [searchBar becomeFirstResponder];
+    } else {
+        [self searchWithQuery:query andParams:nil];
+        [searchBar endEditing:YES];
+    }
 }
 
 @end

@@ -40,6 +40,7 @@
     self.addressLabel.text = self.business.address;
     self.distanceLabel.text = [NSString stringWithFormat:@"%.2f mi", self.business.distance];
     self.categoryLabel.text = self.business.categories;
+    self.costLabel.text = @"";
 }
 
 -(void)layoutSubviews {

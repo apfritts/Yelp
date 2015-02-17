@@ -33,8 +33,8 @@
         float milesPerMeter = 0.000621371;
         [self setDistance:[dictionary[@"distance"] integerValue] * milesPerMeter];
         }
-        @catch {
-            NSLog(@"EXCEPTION FOR OBJECT %@\n\n)
+        @catch (NSException *e) {
+            NSLog(@"EXCEPTION FOR OBJECT:\n%@\n\n%@", dictionary, e);
         }
     }
     return self;

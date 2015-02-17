@@ -20,8 +20,6 @@
 @interface SortCell : UITableViewCell
 
 @property (nonatomic, weak) id<SortCellDelegate> delegate;
-@property (nonatomic, assign) BOOL on;
--(instancetype)initWithTitle:(NSString *)title isOn:(BOOL)on;
 -(void)setTitle:(NSString *)title;
 -(void)setOn:(BOOL)on;
 

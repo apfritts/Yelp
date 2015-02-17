@@ -23,26 +23,18 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
--(instancetype)initWithTitle:(NSString *)title isOn:(BOOL)on {
-    self = [super init];
-    if (self) {
-        [self setTitle:title];
-        [self setOn:on];
-    }
-    return self;
-}
-
 -(void)setTitle:(NSString *)title {
     self.radioLabel.text = title;
 }
 
 -(void)setOn:(BOOL)on {
-    if (on && !self.on) {
-        self.on = YES;
+    if (on && !self.radioButton.selected) {
         [self.radioButton setSelected:YES];
         if (self.delegate != nil) {
             [self.delegate sortCell:self isSelected:YES];
         }
+    } else if (on == NO) {
+        [self.radioButton setSelected:NO];
     }
 }
 

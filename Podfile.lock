@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
   RadioButton: 694b2eec7af41a88ae4dc8c7a638980918e46216
   THSegmentedControl: de1fdbb2fc7b8fc66236773bafe92227b88b96d8
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.35.0

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *sortOrders;
 @property (nonatomic, strong) NSMutableSet *selectedCategories;
 @property (nonatomic, strong) SortCell *selectedSortMethod;
+@property (nonatomic, assign) NSInteger selectedSortMethodId;
 
 @end
 
@@ -28,6 +29,7 @@
     if (self) {
         [self initData];
         self.selectedCategories = [NSMutableSet set];
+        self.selectedSortMethodId = 0;
     }
     return self;
 }
@@ -116,7 +118,12 @@
             break;
         case 1:
         {
-            SortCell *cell = [[SortCell alloc] initWithTitle:self.sortOrders[indexPath.row] isOn:NO];
+            SortCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SortCell"];
+            [cell setTitle:self.sortOrders[indexPath.row]];
+            if (indexPath.row == self.selectedSortMethodId) {
+                [cell setOn:YES];
+                self.selectedSortMethod = cell;
+            }
             cell.delegate = self;
             return cell;
             break;
@@ -143,7 +150,10 @@
 }
 
 -(void)sortCell:(SortCell *)sortCell isSelected:(BOOL)selected {
-    [self.selectedSortMethod setOn:NO];
+    if (self.selectedSortMethod != nil) {
+        [self.selectedSortMethod setOn:NO];
+    }
+    self.selectedSortMethodId = [self.tableView indexPathForCell:sortCell].row;
     self.selectedSortMethod = sortCell;
 }
 

@@ -23,6 +23,8 @@
 		42FD6C6E18DC286B000BF2B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42FD6C6C18DC286B000BF2B9 /* InfoPlist.strings */; };
 		42FD6C7018DC286B000BF2B9 /* YelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD6C6F18DC286B000BF2B9 /* YelpTests.m */; };
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
+		739F40501A93A96D004FC8FA /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 739F404F1A93A96D004FC8FA /* PriceCell.m */; };
+		739F40531A93ABEF004FC8FA /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 739F40521A93ABEF004FC8FA /* Filters.m */; };
 		73C48F111A911B2600092697 /* FiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C48F0F1A911B2600092697 /* FiltersTableViewController.m */; };
 		73C48F121A911B2600092697 /* FiltersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C48F101A911B2600092697 /* FiltersTableViewController.xib */; };
 		73C48F161A911B4300092697 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C48F141A911B4300092697 /* FilterCell.m */; };
@@ -69,6 +71,10 @@
 		42FD6C6B18DC286B000BF2B9 /* YelpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YelpTests-Info.plist"; sourceTree = "<group>"; };
 		42FD6C6D18DC286B000BF2B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		42FD6C6F18DC286B000BF2B9 /* YelpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpTests.m; sourceTree = "<group>"; };
+		739F404E1A93A96D004FC8FA /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriceCell.h; path = Views/PriceCell.h; sourceTree = "<group>"; };
+		739F404F1A93A96D004FC8FA /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PriceCell.m; path = Views/PriceCell.m; sourceTree = "<group>"; };
+		739F40511A93ABEF004FC8FA /* Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
+		739F40521A93ABEF004FC8FA /* Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		73C48F0E1A911B2600092697 /* FiltersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FiltersTableViewController.h; path = "View Controllers/FiltersTableViewController.h"; sourceTree = "<group>"; };
 		73C48F0F1A911B2600092697 /* FiltersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FiltersTableViewController.m; path = "View Controllers/FiltersTableViewController.m"; sourceTree = "<group>"; };
 		73C48F101A911B2600092697 /* FiltersTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FiltersTableViewController.xib; path = "View Controllers/FiltersTableViewController.xib"; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 			children = (
 				8FD7BF641A8DA0D7003880CA /* Business.h */,
 				8FD7BF651A8DA0D7003880CA /* Business.m */,
+				739F40511A93ABEF004FC8FA /* Filters.h */,
+				739F40521A93ABEF004FC8FA /* Filters.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -246,6 +254,8 @@
 				8F3D26201A931AA200332E92 /* SortCell.h */,
 				8F3D26211A931AA200332E92 /* SortCell.m */,
 				8F3D26221A931AA200332E92 /* SortCell.xib */,
+				739F404E1A93A96D004FC8FA /* PriceCell.h */,
+				739F404F1A93A96D004FC8FA /* PriceCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,6 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FD7BF661A8DA0D7003880CA /* Business.m in Sources */,
+				739F40531A93ABEF004FC8FA /* Filters.m in Sources */,
+				739F40501A93A96D004FC8FA /* PriceCell.m in Sources */,
 				73C48F1F1A91ABA900092697 /* HeaderView.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,

@@ -13,6 +13,7 @@
 #import "FiltersTableViewController.h"
 #import <FontAwesome+iOS/NSString+FontAwesome.h>
 #import <FontAwesome+iOS/UIFont+FontAwesome.h>
+#import "Filters.h"
 
 NSString * const kYelpConsumerKey = @"y8PdBHAl5iPRkOxsBx8dnw";
 NSString * const kYelpConsumerSecret = @"bbmW5U3940Lkt0Q0U11hlrciu00";
@@ -118,11 +119,13 @@ NSString * const kYelpTokenSecret = @"V-fVdhmlySYLvCygbgeMuiNdYAU";
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [Filters reset];
     [self searchWithQuery:searchBar.text andParams:nil];
     [searchBar endEditing:YES];
 }
 
 -(void)onSearch {
+    [Filters reset];
     UISearchBar *searchBar = (UISearchBar *)self.navigationItem.titleView;
     NSString *query = searchBar.text;
     if ([query length] == 0) {

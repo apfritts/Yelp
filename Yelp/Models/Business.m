@@ -13,10 +13,13 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
+        @try {
         NSArray *categories = dictionary[@"categories"];
         NSMutableArray *categoryNames = [NSMutableArray array];
         [categories enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [categoryNames addObject:obj[0]];
+            if ([obj count] > 0) {
+                [categoryNames addObject:obj[0]];
+            }
         }];
         [self setCategories:[categoryNames componentsJoinedByString:@", "]];
 
@@ -29,6 +32,10 @@
         [self setRatingImageUrl:dictionary[@"rating_img_url"]];
         float milesPerMeter = 0.000621371;
         [self setDistance:[dictionary[@"distance"] integerValue] * milesPerMeter];
+        }
+        @catch {
+            NSLog(@"EXCEPTION FOR OBJECT %@\n\n)
+        }
     }
     return self;
 }

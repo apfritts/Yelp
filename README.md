@@ -2,7 +2,7 @@
 
 This is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/business)
 
-Time spent: `<Number of hours spent>`
+Time spent: `20`
 
 ### Features
 

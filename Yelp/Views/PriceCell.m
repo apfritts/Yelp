@@ -2,7 +2,7 @@
 //  PriceCell.m
 //  Yelp
 //
-//  Created by AP Fritts on 2/15/15.
+//  Created by AP Fritts on 2/17/15.
 //  Copyright (c) 2015 codepath. All rights reserved.
 //
 
@@ -17,18 +17,16 @@
 
 @implementation PriceCell
 
--(CGSize)intrinsicContentSize {
-    return CGSizeMake([[UIScreen mainScreen] bounds].size.width, 30);
-}
-
 - (void)awakeFromNib {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+
     NSArray *segments = @[@"$", @"$$", @"$$$", @"$$$$"];
     self.priceSegment = [[THSegmentedControl alloc] initWithSegments:segments];
     [self.priceSegment addTarget:self action:@selector(thControlChangedSegment:) forControlEvents:UIControlEventValueChanged | UIControlEventTouchUpInside];
     [self addSubview:self.priceSegment];
     CGSize bounds = [[UIScreen mainScreen] bounds].size;
-    [self.priceSegment setBounds:CGRectMake(4, 4, bounds.width - 8, 22)];
+    [self.priceSegment setBounds:CGRectMake(8, 8, bounds.width - 16, 34)];
+    [self.priceSegment setCenter:CGPointMake([[UIScreen mainScreen] bounds].size.width / 2, 25)];
     NSLog(@"%f x %f", self.priceSegment.center.x, self.priceSegment.center.y);
 }
 
@@ -37,6 +35,10 @@
     for (NSNumber *selection in orderedIndexes) {
         NSLog(@"I'm a selected segment %@", [thSegmentedControl titleForSegmentAtIndex:[selection intValue]]);
     }
+}
+
+-(CGSize)sizeThatFits:(CGSize)size {
+    return CGSizeMake([[UIScreen mainScreen] bounds].size.width, 50);
 }
 
 @end
